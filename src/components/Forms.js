@@ -5,11 +5,26 @@ const Form = () => {
   const [income, setIncome] = useState(0);
   const [date, setDate] = useState(setCurrentDate(new Date()));
   const [totals, setTotals] = useState();
+  const [disableBtn, setDisableBtn] = useState(false);
 
   const topUp = (income) => {
     setValue(totals.excess);
     setIncome(income);
     setDate(setCurrentDate(totals.endDate));
+  }
+
+  const disableButton = (val) => {
+    if(val === ''){
+      setDisableBtn(true);
+    }else{
+      if(parseInt(val) >= 0){
+        setDisableBtn(false);
+      }else{
+        setDisableBtn(true);
+      }
+    }
+
+
   }
 
   return (
@@ -22,14 +37,20 @@ const Form = () => {
               name="Latest Value"
               type="number"
               value={value}
-              onChange={(event) => setValue(event.target.value)}
+              onChange={(event) => {
+                setValue(event.target.value);
+                disableButton(event.target.value);
+                }}
             />
             <InputHTML
               htmlFor="income"
               name="Income"
               type="number"
               value={income}
-              onChange={(event) => setIncome(event.target.value)}
+              onChange={(event) => {
+                setIncome(event.target.value);
+                disableButton(event.target.value);
+              }}
             />
             <InputHTML
               htmlFor="date"
@@ -52,6 +73,7 @@ const Form = () => {
                   event.preventDefault();
                   setTotals(calculateDays(income, value, new Date(date)));
                 }}
+                disabled={disableBtn}
               >
                 Submit
               </button>
