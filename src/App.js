@@ -1,5 +1,7 @@
 import './App.css';
+// import GenerateXML from './components/GenerateXML';
 import Navbar from './components/Navbar';
+// import Reader from './components/Reader';
 import Forms from './components/Forms'
 
 function App() {
@@ -7,6 +9,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Forms />
+      {/* <Reader /> */}
     </div>
   );
 }

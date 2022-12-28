@@ -1,0 +1,35 @@
+<Worksheet ss:Name="Summary">
+    <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="13" x:FullColumns="1"
+     x:FullRows="1" ss:DefaultRowHeight="15">
+     <Column ss:AutoFitWidth="0" ss:Width="97.5"/>
+     <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="96.75"/>
+     <Row>
+      <Cell><Data ss:Type="String">Amount</Data></Cell>
+      <Cell><Data ss:Type="String">Date</Data></Cell>
+      <Cell><Data ss:Type="String">Amount Per Day</Data></Cell>
+     </Row>
+     <% for ( let i=0; i < data.length; i++ ) { %>
+     <Row>
+      <Cell ss:StyleID="s20"><Data ss:Type="Number"><%= data[i].amount %></Data></Cell>
+      <Cell ss:StyleID="s16"><Data ss:Type="String"><%= data[i].date %></Data></Cell>
+      <Cell ss:StyleID="s20"><Data ss:Type="Number"><%= data[i].perDay %></Data></Cell>
+     </Row>
+     <% } %>
+    </Table>
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+     <PageSetup>
+      <Header x:Margin="0.3"/>
+      <Footer x:Margin="0.3"/>
+      <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+     </PageSetup>
+     <Panes>
+      <Pane>
+       <Number>3</Number>
+       <ActiveRow>6</ActiveRow>
+       <ActiveCol>5</ActiveCol>
+      </Pane>
+     </Panes>
+     <ProtectObjects>False</ProtectObjects>
+     <ProtectScenarios>False</ProtectScenarios>
+    </WorksheetOptions>
+   </Worksheet>
